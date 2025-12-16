@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
-require('./db'); // MongoDB connectionnode server.js
+const expressLayouts = require('express-ejs-layouts');
+require('./db'); // MongoDB connection
 const orderRoutes = require('./routes/orderRoutes');
-
+const productRoutes2 = require('./routes/productRoutes2');
 
 const app = express();
 const PORT = 3000;
@@ -14,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 // Template engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts);
+app.set('layout', false); // Disable default layout, we'll set it per route
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,7 +35,8 @@ app.get('/js/testimonials', (req, res) => res.render('testimonials'));
 // Add MongoDB API routes
 app.use('/users', require('./routes/userRoutes'));
 app.use('/', orderRoutes);
-
+app.use('/', productRoutes2);
+app.use('/', require('./routes/adminRoutes')); // Admin routes
 
 // Server
 app.listen(PORT, () => {

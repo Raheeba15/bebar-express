@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
       card.classList.add('hidden-card');
     });
     
-    testimonialCards[currentIndex].style.display = 'block';
+    testimonialCards[currentIndex].style.display = 'flex';
     testimonialCards[currentIndex].classList.remove('hidden-card');
     testimonialCards[currentIndex].classList.add('active');
     
@@ -86,10 +86,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isExpanded) {
       stopAutoSlide();
       
+      // Add expanded class to wrapper for grid layout
+      wrapper.classList.add('expanded');
+      
       testimonialCards.forEach((card, index) => {
-        card.style.display = 'block';
+        card.style.display = 'flex';
         card.classList.remove('hidden-card');
         card.classList.add('show');
+        // Add staggered animation delay
+        card.style.animationDelay = `${index * 0.1}s`;
       });
       
       viewMoreBtn.classList.add('expanded');
@@ -100,8 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
       dotsContainer.style.display = 'none';
       
     } else {
+      // Remove expanded class
+      wrapper.classList.remove('expanded');
+      
       testimonialCards.forEach((card) => {
         card.style.display = 'none';
+        card.style.animationDelay = '0s';
         card.classList.remove('show');
         card.classList.add('hidden-card');
         card.classList.remove('active');
@@ -199,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
       card.classList.remove('active');
     });
     
-    testimonialCards[0].style.display = 'block';
+    testimonialCards[0].style.display = 'flex';
     testimonialCards[0].classList.remove('hidden-card');
     testimonialCards[0].classList.add('active');
     

@@ -42,7 +42,32 @@ mongoose.connect(MONGO_URI)
       { name: "Nachos", price: 8, category: "Snacks", image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400", description: "Loaded nachos with cheese and jalapeños" },
       { name: "Wings", price: 12, category: "Snacks", image: "https://images.unsplash.com/photo-1527477396000-e27137b25c24?w=400", description: "Spicy buffalo wings" },
       { name: "Fries", price: 6, category: "Snacks", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400", description: "Crispy golden fries" },
-      { name: "Onion Rings", price: 7, category: "Snacks", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400", description: "Beer-battered onion rings" }
+      { name: "Onion Rings", price: 7, category: "Snacks", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400", description: "Beer-battered onion rings" },
+      
+      // Additional Alcohol Products
+      { name: "Champagne", price: 65, category: "Alcohol", image: "https://images.unsplash.com/photo-1608270586208-63e97b0e0c0a?w=400", description: "Premium sparkling champagne" },
+      { name: "Bourbon", price: 55, category: "Alcohol", image: "https://images.unsplash.com/photo-1608270586208-63e97b0e0c0a?w=400", description: "Smooth Kentucky bourbon" },
+      { name: "Scotch", price: 60, category: "Alcohol", image: "https://images.unsplash.com/photo-1608270586208-63e97b0e0c0a?w=400", description: "Aged single malt scotch" },
+      { name: "Sake", price: 25, category: "Alcohol", image: "https://images.unsplash.com/photo-1608270586208-63e97b0e0c0a?w=400", description: "Premium Japanese sake" },
+      
+      // Additional Soft Drinks
+      { name: "Ginger Ale", price: 5, category: "Soft Drink", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400", description: "Refreshing ginger ale" },
+      { name: "Root Beer", price: 5, category: "Soft Drink", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400", description: "Classic root beer" },
+      { name: "Cranberry Juice", price: 7, category: "Soft Drink", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400", description: "100% pure cranberry juice" },
+      { name: "Pineapple Juice", price: 6, category: "Soft Drink", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400", description: "Fresh tropical pineapple juice" },
+      
+      // Additional Cocktails
+      { name: "Martini", price: 15, category: "Cocktail", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400", description: "Classic gin or vodka martini" },
+      { name: "Manhattan", price: 16, category: "Cocktail", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400", description: "Whiskey-based classic cocktail" },
+      { name: "Moscow Mule", price: 13, category: "Cocktail", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400", description: "Vodka, ginger beer, and lime" },
+      { name: "Daiquiri", price: 12, category: "Cocktail", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400", description: "Rum-based tropical cocktail" },
+      { name: "Negroni", price: 14, category: "Cocktail", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400", description: "Italian aperitif cocktail" },
+      
+      // Additional Snacks
+      { name: "Mozzarella Sticks", price: 9, category: "Snacks", image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400", description: "Crispy mozzarella sticks with marinara" },
+      { name: "Chicken Tenders", price: 11, category: "Snacks", image: "https://images.unsplash.com/photo-1527477396000-e27137b25c24?w=400", description: "Golden fried chicken tenders" },
+      { name: "Loaded Potato Skins", price: 10, category: "Snacks", image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400", description: "Crispy potato skins with cheese and bacon" },
+      { name: "Quesadilla", price: 9, category: "Snacks", image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400", description: "Cheesy grilled quesadilla" }
     ];
 
     await Product.insertMany(products);
