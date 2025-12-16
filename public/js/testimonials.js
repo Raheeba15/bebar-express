@@ -6,14 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const dotsContainer = document.querySelector('.carousel-dots');
   const wrapper = document.querySelector('.testimonials-wrapper');
   
-  let currentIndex = 0;
+  let currentPage = 0;
   let isExpanded = false;
   let autoSlideInterval;
   const totalCards = testimonialCards.length;
+  let visibleCount = getVisibleCount();
+  let totalPages = Math.max(1, Math.ceil(totalCards / visibleCount));
+
+  function getVisibleCount() {
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  }
 
   function createDots() {
     dotsContainer.innerHTML = '';
-    for (let i = 0; i < totalCards; i++) {
+    for (let i = 0; i < totalPages; i++) {
       const dot = document.createElement('span');
       dot.classList.add('carousel-dot');
       if (i === 0) dot.classList.add('active');
@@ -31,36 +39,35 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateDots() {
     const dots = document.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+      dot.classList.toggle('active', index === currentPage);
     });
   }
 
   function goToSlide(index) {
     if (isExpanded) return;
     
-    currentIndex = index;
+    currentPage = index;
+    const start = currentPage * visibleCount;
+    const end = start + visibleCount;
     
     testimonialCards.forEach((card, idx) => {
-      card.style.display = 'none';
-      card.classList.remove('active');
-      card.classList.add('hidden-card');
+      const inView = idx >= start && idx < end;
+      card.style.display = inView ? 'flex' : 'none';
+      card.classList.toggle('active', inView);
+      card.classList.toggle('hidden-card', !inView);
     });
-    
-    testimonialCards[currentIndex].style.display = 'flex';
-    testimonialCards[currentIndex].classList.remove('hidden-card');
-    testimonialCards[currentIndex].classList.add('active');
     
     updateDots();
   }
 
   function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalCards;
-    goToSlide(currentIndex);
+    currentPage = (currentPage + 1) % totalPages;
+    goToSlide(currentPage);
   }
 
   function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    goToSlide(currentIndex);
+    currentPage = (currentPage - 1 + totalPages) % totalPages;
+    goToSlide(currentPage);
   }
 
   function startAutoSlide() {
@@ -124,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
       dotsContainer.style.display = 'flex';
       
       setTimeout(() => {
-        currentIndex = 0;
+        currentPage = 0;
         goToSlide(0);
         startAutoSlide();
       }, 50);
@@ -202,19 +209,30 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function initCarousel() {
+    visibleCount = getVisibleCount();
+    totalPages = Math.max(1, Math.ceil(totalCards / visibleCount));
     testimonialCards.forEach((card) => {
       card.style.display = 'none';
       card.classList.add('hidden-card');
       card.classList.remove('active');
     });
     
-    testimonialCards[0].style.display = 'flex';
-    testimonialCards[0].classList.remove('hidden-card');
-    testimonialCards[0].classList.add('active');
+    goToSlide(0);
     
     createDots();
     startAutoSlide();
   }
+
+  window.addEventListener('resize', () => {
+    const newVisible = getVisibleCount();
+    if (newVisible !== visibleCount && !isExpanded) {
+      visibleCount = newVisible;
+      totalPages = Math.max(1, Math.ceil(totalCards / visibleCount));
+      currentPage = Math.min(currentPage, totalPages - 1);
+      createDots();
+      goToSlide(currentPage);
+    }
+  });
 
   initCarousel();
 });

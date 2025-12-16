@@ -3,7 +3,7 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 require('./db'); // MongoDB connection
 const orderRoutes = require('./routes/orderRoutes');
-const productRoutes2 = require('./routes/productRoutes2');
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -35,7 +35,7 @@ app.get('/js/testimonials', (req, res) => res.render('testimonials'));
 // Add MongoDB API routes
 app.use('/users', require('./routes/userRoutes'));
 app.use('/', orderRoutes);
-app.use('/', productRoutes2);
+app.use('/', productRoutes);
 app.use('/', require('./routes/adminRoutes')); // Admin routes
 
 // Server
