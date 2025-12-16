@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BeBar - Payment</title>
+  <style>
+    body { font-family: Arial; background: linear-gradient(160deg, #1A1A1A, #5C3A21); color:#fff; margin:0; padding:0;}
+    .header { background:#6b4423; padding:1rem; font-size:1.5rem; font-weight:bold; box-shadow:0 4px 8px rgba(0,0,0,0.5);}
+    .checkout-container { max-width:600px; margin:3rem auto; background:linear-gradient(145deg,#5C3A21,#1A1A1A); padding:2rem; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.7);}
+    h1 { text-align:center; margin-bottom:1.5rem; color:#FFDDAA;}
+    label { display:block; margin-top:1rem; font-weight:bold; color:#EEE8D5;}
+    input, textarea { width:100%; padding:0.6rem; margin-top:0.5rem; border:1px solid #ccc; border-radius:8px; background:#2B2B2B; color:#fff;}
+    input::placeholder, textarea::placeholder { color:#aaa;}
+    .invalid-feedback { color:#FF6B6B; font-size:0.85rem; margin-top:3px;}
+    .payment-options { margin-top:1.5rem; padding:1rem; background:#3A2B1C; border-radius:8px;}
+    .payment-options label { font-weight:normal; color:#FFDDAA;}
+    .confirm-order, .back-btn { margin-top:1.5rem; padding:0.8rem 1.2rem; border:none; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:bold;}
+    .confirm-order { background:#8B4513; color:#fff; width:100%;}
+    .confirm-order:hover { background:#5C3A21;}
+    .back-btn { background:#333; color:#FFDDAA; width:100%;}
+    .back-btn:hover { background:#222; color:#fff;}
+    .card-fields { display:none; }
+  </style>
+</head>
+<body>
+  <div class="header">BeBar</div>
+  <div class="checkout-container">
+    <h1>Payment Information</h1>
+
+    <!-- Entire form wraps all inputs -->
+    <form id="paymentForm" action="/payment" method="POST">
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+      <div class="invalid-feedback"></div>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+      <div class="invalid-feedback"></div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <div class="invalid-feedback"></div>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+      <div class="invalid-feedback"></div>
+
+      <div class="payment-options">
+        <p><strong>Payment Method</strong></p>
+        <label>
+          <input type="radio" name="payment" value="cod" checked onclick="toggleCardFields(false)"> Cash on Delivery
+        </label>
+        <label>
+          <input type="radio" name="payment" value="card" onclick="toggleCardFields(true)"> Card Payment
+        </label>
+      </div>
+
+      <div id="card-fields" class="card-fields">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber">
+        <div class="invalid-feedback"></div>
+
+        <label for="expiry">Expiry Date</label>
+        <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+        <div class="invalid-feedback"></div>
+
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv">
+        <div class="invalid-feedback"></div>
+      </div>
+
+      <label>
+        <input type="checkbox" id="terms" name="terms" required> I agree to the terms and conditions
+      </label>
+      <div class="invalid-feedback"></div>
+
+      <button type="submit" class="confirm-order">Confirm Order</button>
+      <button type="button" class="back-btn" onclick="window.location.href='/buynow'">Back to Cart</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleCardFields(show){
+      document.getElementById('card-fields').style.display = show ? 'block' : 'none';
+    }
+
+    // Frontend validation (optional) before submit
+    document.getElementById('paymentForm').addEventListener('submit', function(e){
+      const feedbacks = document.querySelectorAll('.invalid-feedback');
+      feedbacks.forEach(f => f.textContent='');
+      let valid = true;
+
+      if(document.getElementById('name').value.trim().length<3){
+        valid=false;
+        document.getElementById('name').nextElementSibling.textContent="Full name must be at least 3 characters.";
+      }
+
+      if(!/^\d{10,}$/.test(document.getElementById('phone').value.trim())){
+        valid=false;
+        document.getElementById('phone').nextElementSibling.textContent="Phone must be at least 10 digits.";
+      }
+
+      const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(document.getElementById('email').value.trim())){
+        valid=false;
+        document.getElementById('email').nextElementSibling.textContent="Enter a valid email.";
+      }
+
+      if(document.getElementById('address').value.trim()===""){
+        valid=false;
+        document.getElementById('address').nextElementSibling.textContent="Address required.";
+      }
+
+      const payment = document.querySelector('input[name="payment"]:checked').value;
+      if(payment==="card"){
+        if(!/^\d{16}$/.test(document.getElementById('cardNumber').value.trim())){
+          valid=false;
+          document.getElementById('cardNumber').nextElementSibling.textContent="Card number must be 16 digits.";
+        }
+        if(!/^\d{2}\/\d{2}$/.test(document.getElementById('expiry').value.trim())){
+          valid=false;
+          document.getElementById('expiry').nextElementSibling.textContent="Expiry must be MM/YY.";
+        }
+        if(!/^\d{3}$/.test(document.getElementById('cvv').value.trim())){
+          valid=false;
+          document.getElementById('cvv').nextElementSibling.textContent="CVV must be 3 digits.";
+        }
+      }
+
+      if(!document.getElementById('terms').checked){
+        valid=false;
+        document.getElementById('terms').nextElementSibling.textContent="You must agree to terms.";
+      }
+
+      if(!valid) e.preventDefault(); // prevent submit only if invalid
+    });
+  </script>
+</body>
+</html>

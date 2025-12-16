@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<style>
+.checkout-container.success-box {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px;
+  background: linear-gradient(145deg, #5C3A21, #1A1A1A); /* brown to black gradient */
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  font-family: 'Arial', sans-serif;
+}
+
+.checkout-container.success-box h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #FFDDAA; /* light warm highlight */
+}
+
+.checkout-container.success-box p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #EEE8D5;
+}
+
+.checkout-container.success-box .back-btn {
+  background-color: #8B4513; /* saddle brown */
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkout-container.success-box .back-btn:hover {
+  background-color: #5C3A21; /* darker brown on hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+</style>
+
+<div class="checkout-container success-box">
+  <h1>🎉 Your Order Has Been Placed Successfully!</h1>
+  <p>Thank you for shopping with <strong>BeBar</strong>. Your items will be delivered soon.</p>
+  <button class="back-btn" onclick="window.location.href='/'">Back to Home</button>
+</div>
+
+<%- include('partials/footer') %>
