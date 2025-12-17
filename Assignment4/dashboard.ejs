@@ -1,0 +1,41 @@
+<div class="stats-grid">
+  <div class="stat-card">
+    <h3><i class="fas fa-box"></i> Total Products</h3>
+    <div class="stat-value"><%= totalProducts || 0 %></div>
+  </div>
+  
+  <div class="stat-card">
+    <h3><i class="fas fa-tags"></i> Categories</h3>
+    <div class="stat-value"><%= totalCategories || 0 %></div>
+  </div>
+  
+  <div class="stat-card">
+    <h3><i class="fas fa-dollar-sign"></i> Avg Price</h3>
+    <div class="stat-value">$<%= avgPrice || 0 %></div>
+  </div>
+  
+  <div class="stat-card">
+    <h3><i class="fas fa-chart-line"></i> Max Price</h3>
+    <div class="stat-value">$<%= maxPrice || 0 %></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2><i class="fas fa-tachometer-alt"></i> Quick Actions</h2>
+  </div>
+  <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <a href="/admin/products/new" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Add New Product
+    </a>
+    <a href="/admin/products" class="btn btn-secondary">
+      <i class="fas fa-list"></i> View All Products
+    </a>
+    <a href="/products" class="btn btn-secondary" target="_blank">
+      <i class="fas fa-eye"></i> View Public Page
+    </a>
+  </div>
+</div>
+
+
+
