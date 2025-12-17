@@ -1,0 +1,138 @@
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-error">
+    <i class="fas fa-exclamation-circle"></i> <%= error %>
+  </div>
+<% } %>
+
+<div class="card">
+  <div class="card-header">
+    <h2>
+      <i class="fas fa-<%= typeof product !== 'undefined' && product ? 'edit' : 'plus-circle' %>"></i> 
+      <%= typeof product !== 'undefined' && product ? 'Edit Product' : 'Add New Product' %>
+    </h2>
+    <a href="/admin/products" class="btn btn-secondary">
+      <i class="fas fa-arrow-left"></i> Back to Products
+    </a>
+  </div>
+  
+  <form action="<%= typeof formAction !== 'undefined' ? formAction : '/admin/products' %>" 
+        method="<%= typeof formMethod !== 'undefined' ? formMethod : 'POST' %>">
+    <div class="form-group">
+      <label for="name">
+        <i class="fas fa-tag"></i> Product Name <span style="color: red;">*</span>
+      </label>
+      <input type="text" 
+             id="name" 
+             name="name" 
+             value="<%= typeof product !== 'undefined' && product && product.name ? product.name : '' %>" 
+             required 
+             placeholder="Enter product name">
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="form-group">
+        <label for="price">
+          <i class="fas fa-dollar-sign"></i> Price <span style="color: red;">*</span>
+        </label>
+        <input type="number" 
+               id="price" 
+               name="price" 
+               value="<%= typeof product !== 'undefined' && product && product.price ? product.price : '' %>" 
+               required 
+               step="0.01" 
+               min="0"
+               placeholder="0.00">
+      </div>
+      
+      <div class="form-group">
+        <label for="category">
+          <i class="fas fa-tags"></i> Category <span style="color: red;">*</span>
+        </label>
+        <select id="category" name="category" required>
+          <option value="">Select a category</option>
+          <% if (typeof categories !== 'undefined' && categories && categories.length > 0) { %>
+            <% categories.forEach(cat => { %>
+              <option value="<%= cat %>" <%= typeof product !== 'undefined' && product && product.category === cat ? 'selected' : '' %>>
+                <%= cat %>
+              </option>
+            <% }) %>
+          <% } %>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="image">
+        <i class="fas fa-image"></i> Image URL <span style="color: red;">*</span>
+      </label>
+      <input type="url" 
+             id="image" 
+             name="image" 
+             value="<%= typeof product !== 'undefined' && product && product.image ? product.image : '' %>" 
+             required 
+             placeholder="https://example.com/image.jpg">
+      <% if (typeof product !== 'undefined' && product && product.image) { %>
+        <div style="margin-top: 10px;">
+          <img src="<%= product.image %>" 
+               alt="Preview" 
+               style="max-width: 200px; max-height: 200px; border-radius: 6px; border: 1px solid #ddd;"
+               onerror="this.style.display='none'">
+        </div>
+      <% } else { %>
+        <div style="margin-top: 10px; display: none;" id="preview-container">
+          <img src="" 
+               alt="Preview" 
+               id="image-preview"
+               style="max-width: 200px; max-height: 200px; border-radius: 6px; border: 1px solid #ddd;"
+               onerror="this.style.display='none'">
+        </div>
+      <% } %>
+    </div>
+    
+    <div class="form-group">
+      <label for="description">
+        <i class="fas fa-align-left"></i> Description <span style="color: red;">*</span>
+      </label>
+      <textarea id="description" 
+                name="description" 
+                required 
+                placeholder="Enter product description"><%= typeof product !== 'undefined' && product && product.description ? product.description : '' %></textarea>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> <%= typeof product !== 'undefined' && product ? 'Update Product' : 'Create Product' %>
+      </button>
+      <a href="/admin/products" class="btn btn-secondary">
+        <i class="fas fa-times"></i> Cancel
+      </a>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Image preview on input
+  const imageInput = document.getElementById('image');
+  const previewContainer = document.getElementById('preview-container');
+  const imagePreview = document.getElementById('image-preview');
+  
+  if (imageInput) {
+    imageInput.addEventListener('input', function(e) {
+      const url = e.target.value.trim();
+      
+      if (url) {
+        if (previewContainer) {
+          previewContainer.style.display = 'block';
+        }
+        if (imagePreview) {
+          imagePreview.src = url;
+          imagePreview.style.display = 'block';
+        }
+      } else {
+        if (previewContainer) {
+          previewContainer.style.display = 'none';
+        }
+      }
+    });
+  }
+</script>

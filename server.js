@@ -29,14 +29,14 @@ app.get('/success', (req, res) => res.render('success'));
 app.get('/barandmenu', (req, res) => res.render('barandmenu'));
 app.get('/contact', (req, res) => res.render('contact'));
 app.get('/happenings', (req, res) => res.render('happenings'));
-app.get('/events', (req, res) => res.render('happenings'));
 app.get('/js/testimonials', (req, res) => res.render('testimonials'));
+
 
 // Add MongoDB API routes
 app.use('/users', require('./routes/userRoutes'));
 app.use('/', orderRoutes);
 app.use('/', productRoutes);
-app.use('/', require('./routes/adminRoutes')); // Admin routes
+app.use('/', require('./routes/adminRoutes')); // Admin routes - includes /admin, /admin/products, etc.
 
 // Server
 app.listen(PORT, () => {

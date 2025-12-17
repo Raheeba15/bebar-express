@@ -466,11 +466,13 @@ body {
   width: 100%;
   align-items: stretch;
   position: relative;
+  min-height: 400px;
 }
 
 .testimonials-wrapper.expanded {
   flex-wrap: wrap;
   max-width: 1400px;
+  min-height: auto;
 }
 
 .testimonial-card {
@@ -828,146 +830,349 @@ body {
   }
 }
 
-/* Happenings Page */
+/* Happenings Page - Enhanced Bar Theme Styling */
 .happenings-page {
   background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
   color: #fff;
-  padding: 60px 0 80px;
+  padding: 0;
+  min-height: 100vh;
 }
 
 .happenings-header {
   text-align: center;
-  margin-bottom: 50px;
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, rgba(196, 155, 99, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border-bottom: 3px solid rgba(196, 155, 99, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.happenings-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
+  opacity: 0.4;
+  z-index: 0;
 }
 
 .happenings-header h1 {
-  font-size: 2.4rem;
-  letter-spacing: 2px;
+  font-size: 3.2rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #f3d9b0;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+  text-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 20px rgba(196, 155, 99, 0.3);
+  margin: 0;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .event-section {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 30px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto 60px;
-  padding: 30px;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1300px;
+  margin: 0 auto 50px;
+  padding: 50px 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 4px solid #c49b63;
+  border-right: 4px solid #c49b63;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.event-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.event-section:hover {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 40px rgba(196, 155, 99, 0.2);
+  transform: translateY(-5px);
 }
 
 .event-section:nth-child(even) {
-  grid-template-columns: 0.9fr 1.1fr;
+  border-left: 4px solid #c49b63;
+  border-right: 4px solid #c49b63;
+}
+
+.event-section:nth-child(odd) {
+  margin-top: 0;
+}
+
+.event-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.event-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(196, 155, 99, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.event-image-wrapper:hover::after {
+  opacity: 0.5;
 }
 
 .event-image-wrapper img {
   width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  border: 3px solid rgba(196, 155, 99, 0.4);
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 3px solid rgba(196, 155, 99, 0.5);
   object-fit: cover;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.event-image-wrapper:hover img {
+  transform: scale(1.08);
 }
 
 .event-content {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .event-title {
-  font-size: 1.9rem;
-  color: #f3d9b0;
-  letter-spacing: 1px;
+  font-size: 2.4rem;
+  color: #c49b63;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.event-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #c49b63, transparent);
+}
+
+.event-description {
+  color: #e8e2d3;
+  line-height: 1.9;
+  font-size: 1.05rem;
 }
 
 .event-description p {
-  color: #e8e2d3;
-  line-height: 1.7;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.event-description p:last-child {
+  margin-bottom: 0;
 }
 
 .gallery-section {
-  margin-top: 10px;
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 2px solid rgba(196, 155, 99, 0.3);
 }
 
 .gallery-intro {
   color: #c49b63;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 
 .gallery-grid img {
   width: 100%;
-  border-radius: 10px;
+  height: 200px;
   object-fit: cover;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-  border: 2px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  border: 2px solid rgba(196, 155, 99, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05) translateY(-5px);
+  border-color: #c49b63;
+  box-shadow: 0 10px 30px rgba(196, 155, 99, 0.5);
+}
+
+.gallery-final {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.gallery-final .gallery-intro {
+  margin-bottom: 18px;
+}
+
+.gallery-grid.final-grid {
+  justify-items: center;
+  align-items: center;
 }
 
 .contact-section {
-  margin-top: 40px;
+  margin-top: 60px;
+  padding: 50px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 3px solid #c49b63;
 }
 
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  padding: 24px 30px;
-  background: rgba(0,0,0,0.55);
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
-  max-width: 700px;
+  gap: 50px;
+  padding: 35px 50px;
+  background: rgba(196, 155, 99, 0.1);
+  border-radius: 16px;
+  border: 2px solid rgba(196, 155, 99, 0.3);
+  max-width: 800px;
   margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item {
+  text-align: center;
 }
 
 .contact-item h4 {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: #c49b63;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .contact-item p {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
+  color: #f3d9b0;
+  font-weight: 500;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .contact-divider {
-  width: 1px;
-  height: 45px;
-  background: rgba(255,255,255,0.25);
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(180deg, transparent, #c49b63, transparent);
+  opacity: 0.5;
 }
 
 @media (max-width: 992px) {
+  .happenings-header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
   .event-section {
-    grid-template-columns: 1fr;
+    padding: 50px 30px;
+    gap: 22px;
   }
-  .event-section:nth-child(even) {
-    grid-template-columns: 1fr;
+
+  .event-title {
+    font-size: 2rem;
   }
+
   .event-image-wrapper img {
-    max-height: 360px;
+    max-height: 400px;
   }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .contact-container {
     flex-direction: column;
+    gap: 25px;
+    padding: 30px 40px;
+  }
+
+  .contact-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c49b63, transparent);
+  }
+}
+
+@media (max-width: 768px) {
+  .happenings-header {
+    padding: 60px 20px 40px;
+  }
+
+  .happenings-header h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .event-section {
+    padding: 40px 20px;
+    gap: 18px;
+  }
+
+  .event-title {
+    font-size: 1.75rem;
+  }
+
+  .event-description {
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
     gap: 12px;
   }
-  .contact-divider {
-    display: none;
+
+  .gallery-grid img {
+    height: 250px;
+  }
+
+  .contact-container {
+    padding: 25px 30px;
+  }
+
+  .contact-item p {
+    font-size: 1.1rem;
   }
 }
 
@@ -1372,217 +1577,6 @@ body {
 .submit-btn:hover {
   background: #333;
   color: #fff;
-}
-
-
-
-/* Happenings Page */
-.happenings-page {
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-  min-height: 100vh;
-}
-
-.happenings-header {
-  text-align: center;
-  padding: 80px 20px 60px;
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.happenings-header h1 {
-  font-size: 48px;
-  font-weight: 700;
-  color: #333;
-  letter-spacing: 4px;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-/* Event Sections */
-.event-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
-  display: grid;
-  grid-template-columns: 3fr 0.5fr;
-  gap: 60px;
-  align-items: start;
-}
-
-.event-section:nth-child(odd) {
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-}
-
-.event-section:nth-child(even) {
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-}
-
-/* Alternate layout for darts section */
-.event-section:nth-child(3) {
-  grid-template-columns: 1fr 1fr;
-}
-
-.event-image-wrapper {
-  width: 100%;
-  overflow: hidden;
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.event-image-wrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.event-image-wrapper img:hover {
-  transform: scale(1.05);
-}
-
-.event-content {
-  padding: 20px 0;
-}
-
-.event-title {
-  font-size: 32px;
-  color: #c9a961;
-  margin: 0 0 30px 0;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-.event-description {
-  color: #666;
-  line-height: 1.8;
-  font-size: 15px;
-}
-
-.event-description p {
-  margin: 0 0 20px 0;
-}
-
-/* Gallery Section */
-.gallery-section {
-  margin-top: 40px;
-}
-
-.gallery-intro {
-  text-align: center;
-  color: #666;
-  font-size: 16px;
-  margin-bottom: 25px;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border: 4px solid #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* Contact Section */
-.contact-section {
-  padding: 60px 20px;
-  background: url("https://themes.muffingroup.com/be/bar/wp-content/uploads/2015/02/home_bar_bg.png") repeat center center;
-}
-
-.contact-container {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-}
-
-.contact-item {
-  text-align: center;
-}
-
-.contact-item h4 {
-  font-size: 14px;
-  color: #999;
-  text-transform: lowercase;
-  margin: 0 0 10px 0;
-  font-weight: 400;
-}
-
-.contact-item p {
-  font-size: 24px;
-  color: #333;
-  margin: 0;
-  font-weight: 300;
-}
-
-.contact-divider {
-  width: 1px;
-  height: 60px;
-  background: #e0e0e0;
-}
-
-
-
-/* Responsive Design */
-@media (max-width: 968px) {
-  .event-section {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 20px;
-  }
-
-  .happenings-header h1 {
-    font-size: 36px;
-  }
-
-  .event-title {
-    font-size: 28px;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .happenings-header h1 {
-    font-size: 28px;
-    letter-spacing: 2px;
-  }
-
-  .event-title {
-    font-size: 24px;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-container {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .contact-divider {
-    width: 60px;
-    height: 1px;
-  }
-
-  .event-image-wrapper {
-    border: 4px solid #fff;
-  }
 }
 
 /* Responsive Design */
