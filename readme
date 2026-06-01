@@ -1,0 +1,129 @@
+# 🍺 BeBar — Bar & Brewery Web App
+
+A full-stack bar-themed web application built with Node.js, Express, EJS, and MongoDB. Features a customer-facing storefront, product catalogue, order flow, and a complete admin dashboard for product management.
+
+🔗 **Live Demo:
+https://be-bar-express.vercel.app/
+
+---
+
+## Features
+
+**Customer Side**
+- Homepage with hero section, happenings/events, and customer testimonials carousel
+- Bar & Menu page with drinks, meals, and games catalogue
+- Buy Now flow with payment and order success pages
+- Contact page with enquiry form
+- Responsive design across all screen sizes
+
+**Admin Dashboard** (`/admin`)
+- Product management with full CRUD (Create, Read, Update, Delete)
+- Dashboard with live stats — total products, categories, average & max price
+- Paginated product listings
+- Add/edit product forms with validation
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Runtime | Node.js |
+| Framework | Express.js v5 |
+| Templating | EJS + express-ejs-layouts |
+| Database | MongoDB + Mongoose |
+| Styling | Vanilla CSS + Font Awesome |
+| Fonts | Google Fonts (Alegreya) |
+| Dev Tools | Nodemon |
+| Deployment | Vercel |
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js v18+
+- MongoDB (local or Atlas)
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/Raheeba15/BeBar-Express.git
+
+### Run the app
+
+```bash
+# Development (with auto-restart)
+npm run dev
+
+# Production
+npm start
+```
+
+App runs at `http://localhost:3000`
+
+---
+
+## Project Structure
+
+```
+bebar-express/
+├── models/
+│   ├── Product.js
+│   ├── order.js
+│   └── user.js
+├── routes/
+│   ├── adminRoutes.js
+│   ├── orderRoutes.js
+│   ├── productRoutes.js
+│   └── userRoutes.js
+├── views/
+│   ├── admin/
+│   │   ├── dashboard.ejs
+│   │   ├── products.ejs
+│   │   └── product-form.ejs
+│   ├── partials/
+│   ├── index.ejs
+│   ├── barandmenu.ejs
+│   ├── happenings.ejs
+│   ├── contact.ejs
+│   └── layout.ejs
+├── public/
+│   ├── css/
+│   └── js/
+├── db.js
+├── server.js
+└── vercel.json
+```
+
+---
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage |
+| `/barandmenu` | Bar & Menu catalogue |
+| `/happenings` | Events & happenings |
+| `/contact` | Contact form |
+| `/buynow` | Purchase flow |
+| `/payment` | Payment page |
+| `/success` | Order success |
+| `/admin` | Admin dashboard |
+| `/admin/products` | Product management |
+
+---
+
+## Deployment
+
+This project is deployed on **Vercel** using a custom `vercel.json` config to route all requests through `server.js`.
+
+Environment variables are configured in the Vercel dashboard under Project Settings → Environment Variables.
+
+---
+
+## Author
+
+**Raheeba Aamir**  
+Final Year CS Student @ COMSATS University  
