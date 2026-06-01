@@ -1,9 +1,15 @@
-# 🍺 BeBar — Bar & Brewery Web App
+<img width="1344" height="596" alt="Screenshot (124)" src="https://github.com/user-attachments/assets/c1c3af72-37b2-4136-96c3-22b810f23bd5" /># 🍺 BeBar — Bar & Brewery Web App
 
 A full-stack bar-themed web application built with Node.js, Express, EJS, and MongoDB. Features a customer-facing storefront, product catalogue, order flow, and a complete admin dashboard for product management.
 
 🔗 **Live Demo:
 https://be-bar-express.vercel.app/
+
+Screenshots:
+<img width="1344" height="596" alt="Screenshot (124)" src="https://github.com/user-attachments/assets/74bd4414-4cf8-4052-b7d3-bde2d16b4ad5" />
+<img width="1366" height="595" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/13c8a4f8-560e-443f-a485-d8179ab77526" />
+<img width="1366" height="606" alt="Screenshot (127)" src="https://github.com/user-attachments/assets/8eac870e-c857-4154-bf24-d7fd3a52338b" />
+
 
 ## Features
 
