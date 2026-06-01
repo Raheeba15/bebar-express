@@ -5,7 +5,9 @@ A full-stack bar-themed web application built with Node.js, Express, EJS, and Mo
 🔗 **Live Demo:
 https://be-bar-express.vercel.app/
 
----
+Screenshots:
+
+
 
 ## Features
 
@@ -45,27 +47,10 @@ https://be-bar-express.vercel.app/
 - Node.js v18+
 - MongoDB (local or Atlas)
 
-### Installation
-
-```bash
 # Clone the repo
 git clone https://github.com/Raheeba15/BeBar-Express.git
 
-### Run the app
-
-```bash
-# Development (with auto-restart)
-npm run dev
-
-# Production
-npm start
-```
-
-App runs at `http://localhost:3000`
-
----
-
-## Project Structure
+# Project Structure
 
 ```
 bebar-express/
@@ -114,15 +99,6 @@ bebar-express/
 | `/admin/products` | Product management |
 
 ---
-
-## Deployment
-
-This project is deployed on **Vercel** using a custom `vercel.json` config to route all requests through `server.js`.
-
-Environment variables are configured in the Vercel dashboard under Project Settings → Environment Variables.
-
----
-
 ## Author
 
 **Raheeba Aamir**  
