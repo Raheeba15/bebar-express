@@ -1,4 +1,4 @@
-<img width="1344" height="596" alt="Screenshot (124)" src="https://github.com/user-attachments/assets/c1c3af72-37b2-4136-96c3-22b810f23bd5" /># 🍺 BeBar — Bar & Brewery Web App
+# 🍺 BeBar — Bar & Brewery Web App
 
 A full-stack bar-themed web application built with Node.js, Express, EJS, and MongoDB. Features a customer-facing storefront, product catalogue, order flow, and a complete admin dashboard for product management.
 
