@@ -19,10 +19,11 @@
   "homepage": "https://github.com/Raheeba15/WebProject#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
-    "mongodb": "^7.0.0",
+    "mongodb": "^7.2.0",
     "mongoose": "^9.0.1"
   },
   "devDependencies": {
